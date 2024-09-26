@@ -2,11 +2,12 @@ import {Robot} from "./Robot.jsx";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addRobots} from "../../core/actions.js";
+import {getRobots} from "../../core/selectors.js";
 
 
 export function RobotList() {
   const dispatch = useDispatch();
-  const robots = useSelector(state => state.robotReducer.robots);
+  const robots = useSelector(getRobots);
 
   useEffect(() => {
     fetch('https://robot-cpe-2024.cleverapps.io/robots')

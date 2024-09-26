@@ -1,8 +1,9 @@
 import {Card} from "react-bootstrap";
 import {useSelector} from "react-redux";
+import {getSelectedPart} from "../../core/selectors.js";
 
 export function PartDetail() {
-    const part = useSelector(state => state.partReducer.selectedPart);
+    const part = useSelector(getSelectedPart);
 
     return (
         part ? (

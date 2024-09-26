@@ -1,15 +1,14 @@
 import {PartItem} from "./PartItem.jsx";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {getParts, getSelectedPartIds} from "../../core/selectors.js";
 
 export function PartList() {
 
     const dispatch = useDispatch();
-    const selectedPartIds = useSelector(state => state.partReducer.selectedPartIds);
+    const selectedPartIds = useSelector(getSelectedPartIds);
 
-    const selectedParts = useSelector(state =>
-        state.partReducer.parts.filter(part => selectedPartIds.includes(part.id))
-    );
+    const selectedParts = useSelector(getParts).filter(part => selectedPartIds.includes(part.id))
 
     console.log("selectedParts", selectedParts)
 

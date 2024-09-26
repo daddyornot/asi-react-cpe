@@ -3,11 +3,12 @@ import {Description} from "./Description.jsx";
 import {Card} from 'react-bootstrap';
 import {useDispatch, useSelector} from "react-redux";
 import {resetSelectedPart, resetSelectedRobot, updateSelectedRobot} from "../../core/actions.js";
+import {getSelectedRobotId} from "../../core/selectors.js";
 
 export function Robot({robot}) {
 
     const dispatch = useDispatch();
-    const selectedRobotId = useSelector(state => state.robotReducer.selectedRobotId);
+    const selectedRobotId = useSelector(getSelectedRobotId);
 
     const handleSelectedRobot = () => {
         dispatch(resetSelectedRobot())
