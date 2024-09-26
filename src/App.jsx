@@ -1,22 +1,9 @@
-import React, {useEffect, useState} from 'react';
 import {RobotList} from "./components/Robot/RobotList.jsx";
 import {PartList} from "./components/Part/PartList.jsx";
 import {Col, Container, Row} from "react-bootstrap";
+import {PartDetail} from "./components/Part/PartDetail.jsx";
 
 function App() {
-    // state is initialized by a props
-    const [robots, setRobots] = useState([]);
-    const [selectedPartsIds, setSelectedPartsIds] = useState([])
-
-    useEffect(() => {
-        fetch('https://robot-cpe-2024.cleverapps.io/robots')
-            .then(response => response.json())
-            .then(data => setRobots(data));
-    }, []);
-
-    useEffect(() => {
-        console.log(selectedPartsIds)
-    }, [selectedPartsIds]);
 
     return (
         <Container fluid>
@@ -26,10 +13,13 @@ function App() {
             <Row>
                 <h2>Robot List</h2>
                 <Col>
-                    <RobotList robots={robots} setSelectedPartsIds={setSelectedPartsIds}/>
+                    <RobotList/>
                 </Col>
                 <Col>
-                    <PartList partsId={selectedPartsIds}/>
+                    <PartList/>
+                </Col>
+                <Col>
+                    <PartDetail/>
                 </Col>
             </Row>
         </Container>

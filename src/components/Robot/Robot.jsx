@@ -1,25 +1,37 @@
 import {Label} from './Label.jsx';
 import {Description} from "./Description.jsx";
 import {Card} from 'react-bootstrap';
-import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
-export function Robot({robot, setSelectedPartsIds}) {
-    const [isSelected, setIsSelected] = useState(false);
+export function Robot({robot}) {
+
+    const dispatch = useDispatch();
+    const selectedRobotId = useSelector(state => state.robotReducer.selectedRobotId);
 
     const handleSelectedRobot = () => {
-        if (isSelected) {
-            setSelectedPartsIds([]);
-            setIsSelected(false);
+        if (selectedRobotId != null) {
+            dispatch({
+                type: 'UPDATE_SELECTED_ROBOT',
+                payload: null
+            })
+            dispatch({
+                type: 'UPDATE_SELECTED_PART',
+                payload: null
+            })
         } else {
-            setSelectedPartsIds(robot.parts);
-            setIsSelected(true);
+            dispatch({
+                type: 'UPDATE_SELECTED_ROBOT',
+                payload: robot
+            })
         }
     }
 
     return (
         <div style={{"margin": "1rem"}}>
-            <Card style={{"width": "18rem"}} onClick={handleSelectedRobot}
-                  className={isSelected ? "border-primary" : ""}>
+            <Card style={{"width": "18rem"}}
+                  onClick={handleSelectedRobot}
+                  className={selectedRobotId === robot.id ? "border-primary" : ""}
+            >
                 <Card.Header>Robot Description</Card.Header>
                 <Label title={robot.title}/>
                 <Description id={robot.id} label={robot.title}/>
