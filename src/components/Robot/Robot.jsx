@@ -1,4 +1,4 @@
-import {Label} from './Label';
+import {Label} from './Label.jsx';
 import {Description} from "./Description.jsx";
 import {Card} from 'react-bootstrap';
 import {useState} from "react";

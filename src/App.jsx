@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {RobotList} from "./components/RobotList.jsx";
-import {PartList} from "./components/PartList.jsx";
+import {RobotList} from "./components/Robot/RobotList.jsx";
+import {PartList} from "./components/Part/PartList.jsx";
+import {Col, Container, Row} from "react-bootstrap";
 
 function App() {
     // state is initialized by a props
@@ -18,14 +19,20 @@ function App() {
     }, [selectedPartsIds]);
 
     return (
-        <div className="App">
-            <h1> this is my first React Component</h1>
-            <h2>Robot List</h2>
-            <div style={{"display": "flex"}}>
-                <RobotList robots={robots} setSelectedPartsIds={setSelectedPartsIds}/>
-                <PartList partsId={selectedPartsIds}/>
-            </div>
-        </div>
+        <Container fluid>
+            <Row>
+                <h1> this is my first React Component</h1>
+            </Row>
+            <Row>
+                <h2>Robot List</h2>
+                <Col>
+                    <RobotList robots={robots} setSelectedPartsIds={setSelectedPartsIds}/>
+                </Col>
+                <Col>
+                    <PartList partsId={selectedPartsIds}/>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 

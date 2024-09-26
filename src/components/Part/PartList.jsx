@@ -18,6 +18,13 @@ export function PartList({partsId}) {
 
     return (
         <div>
+            {/*{*/}
+            {/*    parts.filter(id => partsId.includes(id))*/}
+            {/*        .map((part) => (*/}
+            {/*            <PartItem key={part.id} part={part} style={{"margin-bottom": "1rem"}}/>*/}
+            {/*        ))*/}
+            {/*}*/}
+
             {parts.map((part) => (
                 <PartItem key={part.id} part={part} style={{"margin-bottom": "1rem"}}/>
             ))}
