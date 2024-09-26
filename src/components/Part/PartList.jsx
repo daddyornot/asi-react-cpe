@@ -5,8 +5,6 @@ import {useDispatch, useSelector} from "react-redux";
 export function PartList() {
 
     const dispatch = useDispatch();
-
-    // get selected part ids from the store
     const selectedPartIds = useSelector(state => state.partReducer.selectedPartIds);
 
     const selectedParts = useSelector(state =>
@@ -16,8 +14,6 @@ export function PartList() {
     console.log("selectedParts", selectedParts)
 
     useEffect(() => {
-        console.log("updating parts")
-
         // /parts?id=A1&id=A2
         let partsIdString = '';
         if (selectedPartIds.length > 0) {

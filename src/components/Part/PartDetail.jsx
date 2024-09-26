@@ -6,7 +6,7 @@ export function PartDetail() {
 
     return (
         part ? (
-            <Card>
+            <Card style={{"width": "30rem"}}>
                 <Card.Header>{part.title}</Card.Header>
                 <Card.Text>{part.description}</Card.Text>
                 {part.visual_type === 'img' && <img className='card-img' src={part.visual_src} alt="part"/>}

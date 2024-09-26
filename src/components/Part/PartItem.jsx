@@ -1,23 +1,16 @@
 import {Card} from "react-bootstrap";
 import {TablePart} from "./TablePart.jsx";
 import {useDispatch, useSelector} from "react-redux";
+import {resetSelectedPart, updateSelectedPart} from "../../core/actions.js";
 
 export function PartItem({part}) {
     const dispatch = useDispatch();
     const selectedPart = useSelector(state => state.partReducer.selectedPart);
 
     const handleSelectedPart = () => {
-        console.log(part);
-        if (selectedPart != null) {
-            dispatch({
-                type: 'UPDATE_SELECTED_PART',
-                payload: null
-            })
-        } else {
-            dispatch({
-                type: 'UPDATE_SELECTED_PART',
-                payload: part
-            })
+        dispatch(resetSelectedPart())
+        if (selectedPart !== part) {
+            dispatch(updateSelectedPart(part))
         }
     }
 

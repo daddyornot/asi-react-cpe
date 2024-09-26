@@ -1,6 +1,7 @@
 import {Robot} from "./Robot.jsx";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {addRobots} from "../../core/actions.js";
 
 
 export function RobotList() {
@@ -11,10 +12,7 @@ export function RobotList() {
     fetch('https://robot-cpe-2024.cleverapps.io/robots')
         .then(response => response.json())
         .then(data => {
-            dispatch({
-                type: 'ADD_ROBOTS',
-                payload: data
-            })
+            dispatch(addRobots(data))
         });
   }, [dispatch]);
 

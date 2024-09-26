@@ -2,6 +2,7 @@ import {Label} from './Label.jsx';
 import {Description} from "./Description.jsx";
 import {Card} from 'react-bootstrap';
 import {useDispatch, useSelector} from "react-redux";
+import {resetSelectedPart, resetSelectedRobot, updateSelectedRobot} from "../../core/actions.js";
 
 export function Robot({robot}) {
 
@@ -9,20 +10,10 @@ export function Robot({robot}) {
     const selectedRobotId = useSelector(state => state.robotReducer.selectedRobotId);
 
     const handleSelectedRobot = () => {
-        if (selectedRobotId != null) {
-            dispatch({
-                type: 'UPDATE_SELECTED_ROBOT',
-                payload: null
-            })
-            dispatch({
-                type: 'UPDATE_SELECTED_PART',
-                payload: null
-            })
-        } else {
-            dispatch({
-                type: 'UPDATE_SELECTED_ROBOT',
-                payload: robot
-            })
+        dispatch(resetSelectedRobot())
+        dispatch(resetSelectedPart())
+        if (selectedRobotId !== robot.id) {
+            dispatch(updateSelectedRobot(robot))
         }
     }
 
